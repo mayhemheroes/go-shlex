@@ -1,0 +1,9 @@
+project: go-shlex
+target: fuzz_lexer
+cmds:
+  - cmd: /mayhem/fuzz_lexer
+    libfuzzer: true
+    dictionary: /mayhem/mayhem/fuzz_lexer.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_lexer/testsuite

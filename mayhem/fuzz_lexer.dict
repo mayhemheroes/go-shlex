@@ -1,0 +1,35 @@
+# libFuzzer dictionary for google/shlex's FuzzLexer (shell-style lexer).
+# The lexer state machine keys off a small set of special runes: quote chars,
+# the escape char, the comment char, and whitespace. These tokens push the
+# fuzzer into the quoting / escaping / comment states faster.
+
+# quote / escape / comment specials (the classifier's named rune classes)
+"\""
+"'"
+"\\"
+"#"
+
+# whitespace (word separators / comment terminator)
+" "
+"\x09"
+"\x0d"
+"\x0a"
+
+# escaped quote inside a double-quoted string ("five \"six\"")
+"\\\""
+# escaped backslash
+"\\\\"
+
+# common word shapes the upstream tests exercise
+"one"
+"two three"
+"thirteen=13"
+"fourteen/14"
+"="
+"/"
+
+# quoted-segment shapes
+"\"\""
+"''"
+"\" \""
+"' '"
